@@ -1,0 +1,283 @@
+\documentclass{beamer}
+\usepackage{ngerman}
+\usepackage{listings}
+\usetheme{Madrid}
+\title{Programmieren Tutorium}
+\author{Florian Tobias Schandinat}
+\date{25.10.2010}
+\institute{}
+\definecolor{mygreen}{RGB}{0,128,0}
+\definecolor{mybrown}{RGB}{128,0,0}
+\definecolor{mygray}{RGB}{240,240,240}
+\lstset{language=Java,
+	backgroundcolor=\color{mygray},
+	basicstyle=\tiny\ttfamily,
+	keywordstyle=\color{blue},
+	stringstyle=\color{mybrown},
+	commentstyle=\color{gray},
+	numbers=left,
+	numberstyle=\color{mygreen},
+	frame=single,
+	tabsize=4,
+	showstringspaces=false,
+	xleftmargin=3.5em,
+	xrightmargin=2em}
+
+
+\begin{document}
+
+
+\begin{frame}
+\frametitle{Willkommen}
+\begin{block}{Programmieren Tutorium 6}
+\begin{description}
+\item[Wer?] Florian Tobias Schandinat\\
+\item[Wo?] 50.34, Raum -108\\
+\item[Wann?] jeden Montag 17:30-19:00
+\end{description}
+\end{block}
+
+\begin{block}{Material online}
+http://github.com/schandinat/programmieren\_ws10
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ziel}
+\begin{block}{Prim"arziel}
+Konzept der objekt-orientierten Programmierung verstehen und es in Form von (Java) Programmen umsetzen k"onnen\\[1em]
+Diese Veranstaltung richtet sich auch an StudentInnen, die noch nie in ihrem Leben programmiert haben!
+\end{block}
+
+\pause
+
+\begin{block}{Sekund"arziel}
+Google (Suchmaschine) verstehen und nachbauen
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Organisatorisches}
+\begin{block}{"Ubungsbetrieb}
+14 t"agig\\
+6 "Ubungsbl"atter, insgesamt ca. 120 Punkte\\
+Unbenoteter "Ubungsschein: $\ge$ 60 Punkte\\
+Anmeldung zum Schein unter https://studium.kit.edu/\\
+Abgabe: \alert{Praktomat, bis Montag 13:00}\\
+https://praktomat.info.uni-karlsruhe.de/
+\end{block}
+
+\pause
+
+\begin{block}{Disclaimer}
+\alert{Jetzt ausf"ullen und abgeben!}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Praktomat}
+\begin{center}
+\textbf{\Huge Demo}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Regeln}
+\begin{block}{}
+\begin{itemize}
+\item \alert{Niemand schreibt ab!}\pause\\
+\item Im Tutorium redet immer nur eine Person\pause\\
+\item Fragen sofort stellen\\Das Tutorium ist daf"ur da um eure Fragen zu beantworten!
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Fragen}
+\begin{center}
+\textbf{\Huge Habe ich etwas vergessen?}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Java}
+\begin{block}{Von der Quelle bis zur M"undung}
+$$\overset{programmieren}{\underset{\langle du\rangle}{\longrightarrow}} \underset{\text{Quellcode}}{\text{.java}} \overset{compilieren/"ubersetzen}{\underset{javac}{\longrightarrow}} \underset{\text{Bytecode}}{\text{.class}} \overset{interpretieren/ausf"uhren}{\underset{java}{\longrightarrow}}$$
+\end{block}
+
+\pause
+
+\begin{block}{Hinweise}
+\begin{itemize}
+\item Quellcode wird in Textdateien (plaintext) gespeichert\\
+\item Immer nur eine Klasse pro Datei\\
+\item $\langle$Dateiname$\rangle$ = $\langle$Klassenname$\rangle$.java\\
+\item Nur Klassen mit einer main-Methode sind ausf"uhrbar
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Hello World!}
+\lstinputlisting[title=HelloWorld.java]{examples/HelloWorld.java}
+\pause
+\begin{block}{Wie compiliert man das und f"uhrt es ggf. hinterher aus?}
+\pause
+javac HelloWorld.java\pause\\
+java HelloWorld
+\end{block}
+\pause
+\begin{block}{Ausgabe}
+Hello World!
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Was ist (k)eine Textdatei}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tools}
+\begin{block}{Texteditoren}
+\end{block}
+
+\begin{block}{Java Compiler}
+\end{block}
+
+\begin{block}{Java API - Dokumentation}
+
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Bis n"achstes Mal}
+\begin{block}{Aufgabe}
+HelloWorld.java kompilieren und ausf"uhren
+\end{block}
+
+\begin{block}{Fragen und Probleme}
+gerne auch per E-Mail an FlorianSchandinat@gmx.de
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Klasse und Objekt}
+\pause
+\begin{block}{Klasse}
+Abstraktion von Objekten\\
+\pause
+\begin{itemize}
+\item Attribute
+\item Methoden
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Objekt}
+Instanz einer Klasse\\
+\pause
+\begin{itemize}
+\item Identit"at ($\leftrightarrow$ Instanz)
+\item Zustand ($\leftrightarrow$ Attribute)
+\item Verhalten ($\leftrightarrow$ Methoden)
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Attribute}
+\begin{block}{Woraus besteht ein Attribut?}
+\pause
+\begin{itemize}
+\item Typ
+\item Bezeichner (Attributname)
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Typ}
+\begin{itemize}
+\item Elementare Datentypen
+\item Klassen
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Typ -- Elementare Datentypen}
+\begin{block}{Wichtig}
+Es werden die Werte direkt gespeichert
+\end{block}
+
+\pause
+
+\begin{block}{Welche gibt es und was speichern sie?}
+\pause
+\begin{itemize}
+\item boolean -- \pause Wahrheitswert: true, false\pause\\
+\item int -- \pause Ganzzahl: 1, 2, 670, -210\pause\\
+\item float -- \pause Kommazahl (einfache Genauigkeit): 1, 0.1f, -0.5f, 1E-10f\pause\\
+\item double -- \pause Kommazahl (doppelte Genauigkeit): -0.5, 1E-50\pause\\
+\item char -- \pause Einzelnes Zeichen: 'a', 'b', '1', '2', '-', '\#'\\
+\item \dots
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Typ -- Klassen}
+\begin{block}{Wichtig}
+Es werden lediglich Referenzen auf die Objekte gespeichert
+\end{block}
+
+\pause
+
+\begin{block}{Vordefinierte Klassen}
+\begin{itemize}
+\item String -- \pause Ganze Zeichenketten: ''Hello World!'', ''-13''\\
+\item \dots
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{War dieses Tutorium hilfreich?}
+\begin{center}
+\textbf{\Huge Wer meint, dass er/sie das 1. "Ubungsblatt jetzt im Prinzip l"osen kann?}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ende}
+\begin{block}{TODO}
+\begin{enumerate}
+\item Einreichen einer L"osung f"ur das 1. "Ubungsblatt im Praktomat bis \alert{1.11.2010, 13:00}
+\item Anmelden f"ur den "Ubungsschein auf https://studium.kit.edu/ bis \alert{31.3.2011}
+\item HelloWorld.java compilieren und ausf"uhren
+\end{enumerate}
+\end{block}
+
+\begin{block}{Vielen Dank f"ur die Aufmerksamkeit!}
+...und viel Spa"s beim Programmieren :)
+\end{block}
+\end{frame}
+
+
+\end{document}
