@@ -1,11 +1,12 @@
 \documentclass{beamer}
 \usepackage{ngerman}
 \usepackage{listings}
+\usepackage {ulem}
 \usetheme{Madrid}
 \title{Programmieren Tutorium}
 \author{Florian Tobias Schandinat}
 \date{25.10.2010}
-\institute{}
+\institute{FTS}
 \definecolor{mygreen}{RGB}{0,128,0}
 \definecolor{mybrown}{RGB}{128,0,0}
 \definecolor{mygray}{RGB}{240,240,240}
@@ -65,7 +66,7 @@ Google (Suchmaschine) verstehen und nachbauen
 6 "Ubungsbl"atter, insgesamt ca. 120 Punkte\\
 Unbenoteter "Ubungsschein: $\ge$ 60 Punkte\\
 Anmeldung zum Schein unter https://studium.kit.edu/\\
-Abgabe: \alert{Praktomat, bis Montag 13:00}\\
+Abgabe: \alert{Praktomat, montags bis 13:00}\\
 https://praktomat.info.uni-karlsruhe.de/
 \end{block}
 
@@ -141,25 +142,48 @@ Hello World!
 
 
 \begin{frame}
-\frametitle{Was ist (k)eine Textdatei}
+\frametitle{Was ist (k)eine Textdatei?}
+\begin{block}{.doc, .docx, .odt}
+\pause
+sind \alert{keine} Textdateien!\\
+Sie enthalten neben dem eigentlich Text auch noch Formatierungen und Metainformationen!\\
+Unter anderem deshalb programmiert man \alert{nicht} mit Microsoft Word oder Open/Libre Office.
+\end{block}
+
+\pause
+
+\begin{block}{.txt, .java}
+sind Textdateien.\\
+Sie enthalten wirklich nur den angezeigten Text!\\
+Man erstellt Sie mit einem Texteditor (n"achste Folie). Zum Programmieren bevorzugt man solche die Syntax-Highlighting unterst"utzen.
+\end{block}
 \end{frame}
 
 \begin{frame}
 \frametitle{Tools}
 \begin{block}{Texteditoren}
+Windows: Notepad++, Notepad\\
+Linux: gedit, Kate\\
+Mac: TextEdit, SimpleText\\
+...und viele andere, welchen ihr benutzt bleibt euch "uberlassen!
 \end{block}
 
-\begin{block}{Java Compiler}
+\begin{block}{Java Development Kit (JDK)}
+\begin{itemize}
+\item \sout{Sun} Oracle JDK: http://java.sun.com/javase/downloads/
+\item OpenJDK: http://openjdk.java.net/install/
+\end{itemize}
+Hinweis: Unter Mac OS ist JDK standardm"a"sig installiert
 \end{block}
 
 \begin{block}{Java API - Dokumentation}
-
+http://download.oracle.com/javase/6/docs/api/
 \end{block}
 \end{frame}
 
 
 \begin{frame}
-\frametitle{Bis n"achstes Mal}
+\frametitle{Eine kleine Aufgabe f"ur zu Hause}
 \begin{block}{Aufgabe}
 HelloWorld.java kompilieren und ausf"uhren
 \end{block}
@@ -204,6 +228,10 @@ Instanz einer Klasse\\
 \item Typ
 \item Bezeichner (Attributname)
 \end{itemize}
+\pause
+Beispiele:\\
+\lstinline|int anzahl;|\\
+\lstinline|int gewicht; // in kg|
 \end{block}
 
 \pause
@@ -228,11 +256,11 @@ Es werden die Werte direkt gespeichert
 \begin{block}{Welche gibt es und was speichern sie?}
 \pause
 \begin{itemize}
-\item boolean -- \pause Wahrheitswert: true, false\pause\\
-\item int -- \pause Ganzzahl: 1, 2, 670, -210\pause\\
-\item float -- \pause Kommazahl (einfache Genauigkeit): 1, 0.1f, -0.5f, 1E-10f\pause\\
-\item double -- \pause Kommazahl (doppelte Genauigkeit): -0.5, 1E-50\pause\\
-\item char -- \pause Einzelnes Zeichen: 'a', 'b', '1', '2', '-', '\#'\\
+\item boolean -- Wahrheitswert: true, false\pause\\
+\item int -- Ganzzahl: 1, 2, 670, -210\pause\\
+\item float -- Kommazahl (einfache Genauigkeit): 1, 0.1f, -0.5f, 1E-10f\pause\\
+\item double -- Kommazahl (doppelte Genauigkeit): -0.5, 1E-50\pause\\
+\item char -- Einzelnes Zeichen: 'a', 'b', '1', '2', '-', '\#'\\
 \item \dots
 \end{itemize}
 \end{block}
@@ -248,11 +276,62 @@ Es werden lediglich Referenzen auf die Objekte gespeichert
 \pause
 
 \begin{block}{Vordefinierte Klassen}
+\pause
 \begin{itemize}
-\item String -- \pause Ganze Zeichenketten: ''Hello World!'', ''-13''\\
+\item String -- Ganze Zeichenketten: ''Hello World!'', ''-13''\pause\\
+\item Integer -- Ganzzahl (analog zu int, kann aber auch \textit{null} sein)\\
 \item \dots
 \end{itemize}
 \end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Attributnamen}
+\begin{block}{sollen ... sein}
+\begin{itemize}
+\item aussagekr"aftig (nicht: \textit{a, b, c, attribut1, attribut2})\\
+\item kurz und pr"agnant (keine Romane)\\
+\item mit einem kleinen Anfangsbuchstaben (\textit{gewicht} statt \textit{Gewicht})\\
+\item bei aus mehreren W"ortern zusammengesetzten Namen die einzelnen Wortanf"ange mit Gro"sbuchstaben markiert (\textit{linkesRad})
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Kommentare}
+\begin{block}{sollen ...}
+\begin{itemize}
+\item erg"anzende Informationen liefern\\
+\item nicht das offensichtliche (Programmiersprache) beschreiben
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{3 Arten von Kommentaren}
+\begin {itemize}
+\item Einzeiliger Kommentar \lstinline|// ...|\\
+\item Mehrzeiliger Kommentar \lstinline|/* ... */|\\
+\item JavaDoc Kommentar \lstinline|/** ... */|\\
+folgt genauen Regeln, mehr dazu ein anderes Mal
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Wichtig}
+\alert{Der Code soll auch ohne Kommentare verst"andlich sein!}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{"Ubung}
+\begin{center}
+\textbf{\Huge Auto}
+\end{center}
 \end{frame}
 
 
