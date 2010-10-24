@@ -5,9 +5,9 @@ class HelloWorld {
 	/**
 	 * This method prints "Hello World!"
 	 *
-	 * @param argv unused 
+	 * @param args unused 
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] args) {
 		System.out.println("Hello World!");
 	}
 }
