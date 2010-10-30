@@ -1,0 +1,228 @@
+\documentclass{beamer}
+\usepackage{ngerman}
+\usepackage{listings}
+\usepackage {ulem}
+\usetheme{Madrid}
+\title{Programmieren Tutorium}
+\author{Florian Tobias Schandinat}
+\date{2.11.2010}
+\institute{FTS}
+\definecolor{mygreen}{RGB}{0,128,0}
+\definecolor{mybrown}{RGB}{128,0,0}
+\definecolor{mygray}{RGB}{240,240,240}
+\lstset{language=Java,
+	backgroundcolor=\color{mygray},
+	basicstyle=\tiny\ttfamily,
+	keywordstyle=\color{blue},
+	stringstyle=\color{mybrown},
+	commentstyle=\color{gray},
+	numbers=left,
+	numberstyle=\color{mygreen},
+	frame=single,
+	tabsize=4,
+	showstringspaces=false,
+	xleftmargin=3.5em,
+	xrightmargin=2em}
+
+
+\begin{document}
+
+
+\begin{frame}
+\frametitle{Willkommen}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{R"uckblick: 1. "Ubungsblatt}
+\begin{center}
+\textbf{\Huge Wie ist das 1. "Ubungsblatt gelaufen?}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Einschub: Hello World! -- Reloaded}
+\begin{block}{Warum?}
+Wir k"onnen jetzt HelloWorld.java compilieren und ausf"uhren...\pause\\
+...nun schauen wir es uns mal ein bisschen genauer an!
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Einschub: Hello World! -- main}
+\lstinputlisting[title=HelloWorld.java]{examples/HelloWorld.java}
+\pause
+\begin{block}{\texttt{public static void main(String[] args)}}
+\begin{itemize}
+\item \texttt{public static} Schl"usselw"orter\\
+\item \texttt{void} R"uckgabetyp\\
+\item \texttt{main} Methodenname\\
+\item \texttt{String[] args} Parameter
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Einschub: Hello World! -- Schl"usselw"orter}
+\begin{block}{\texttt{public}}
+\begin{itemize}
+\item \textbf{Methoden (allgemein)} Erkl"arung kommt im Laufe des Semesters
+\item \textbf{main (speziell)} Muss immer \texttt{public} sein!
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{\texttt{static}}
+\begin{itemize}
+\item \textbf{Methoden (allgemein)} ''normale'' Methoden (ohne \texttt{static}) beziehen sich auf ein konkretes Objekt dessen Attribute sie lesen (und gegebenfalls ver"andern) k"onnen. Im Gegensatz dazu beziehen sich \texttt{static} Methoden auf \alert{kein Objekt} und werden deswegen auch als Klassenmethoden bezeichnet
+\item \textbf{main (speziell)} Muss immer \texttt{static} sein! (kein Objekt vorhanden)
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Einschub: Hello World! -- R"uckgabetyp und Methodenname}
+\begin{block}{R"uckgabetyp}
+Dient der R"uckgabe von Informationen an den Aufrufer\\
+Beispiel: Signalisierung von Fehlern\\
+\begin{itemize}
+\item \textbf{Methoden (allgemein)} Grunds"atzlich kann jeder Typ, wie wir sie von Attributen kennen, als R"uckgabetyp verwendet werden (also unter anderem auch Klassen). Zus"atzlich gibt es noch \texttt{void}, was bedeutet, dass nichts zur"uckgegeben wird
+\item \textbf{main (speziell)} Muss immer \texttt{void} sein! (Festlegung)
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Methodennamen}
+\begin{itemize}
+\item \textbf{Methoden (allgemein)} Es gilt das gleiche wie f"ur Attributnamen
+\item \textbf{main (speziell)} Muss nat"urlich \texttt{main} sein ;)
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Einschub: Hello World! -- Parameter (allgemein)}
+\begin{block}{Parameter"ubergabe}
+Mit Parametern kann der Aufrufer das Verhalten der Methode beeinflussen\\
+Beispiel: Zahl zu einer anderen addieren (Parameter: zu addierende Zahl)
+\end{block}
+
+\pause
+
+\begin{block}{Parameter}
+Eine Methode kann 0, 1, ... Parameter haben, die jeweils aus Typ (wie die Typen bei Attributen) und Name (auch 'formaler Parameter' genannt) bestehen\\
+Der Wert den ein Parameter zur Ausf"uhrung der Methode annimmt nennt man auch 'aktueller Parameter' und kann mittels des 'formalen Parameters' (Parametername) innerhalb der Methode verwendet werden\\
+Beispiele:\\
+\lstinline|int power(int base, int exponent)|\\
+\lstinline|void printError(String message)|
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Einschub: Hello World! -- Parameter (speziell)}
+\begin{block}{Parameter bei \texttt{main}}
+Bis auf den formalen Parameter, der nur innerhalb der Methode eine Rolle spielt, ist es immer \texttt{String[] args}\\
+\texttt{args} ist ein Array (sp"ater in der Vorlesung) von Strings, die java mit "ubergeben werden
+\end{block}
+
+\pause
+
+\begin{block}{Beispiele}
+\ttfamily
+\$ java ParameterOut Hallo\\
+args[0]: Hallo\\[0.5em]
+\$ java ParameterOut Hello World\\
+args[0]: Hello\\
+args[1]: World\\[0.5em]
+\$ java ParameterOut \textrm{''}Dies ist ein Beispiel\textrm{''}\\
+args[0]: Dies ist ein Beispiel
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Einschub: Hello World! -- Ausgabe}
+\begin{block}{\texttt{System.out.println(\textrm{''}Hello World!\textrm{''})}}
+\begin{description}
+\item[\texttt{System}] Eine Klasse die Systemfunktionalit"at wie Ein- und Ausgabe zur Verf"ugung stellt\\
+\item[\texttt{out}] Ein Attribut der Klasse \texttt{System} vom Typ \texttt{PrintStream}\\
+\item[\texttt{println}] Methoden der Klasse \texttt{PrintStream} die verschiedene Datentypen ausgeben k"onnen\\ \texttt{print} verursacht anders als \texttt{println} keinen Zeilenvorschub
+\end{description}
+\alert{Detailierte Informationen findet ihr in der Java API!}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Einschub: Hello World! -- Ende}
+\lstinputlisting[title=HelloWorld.java]{examples/HelloWorld.java}
+\begin{center}
+\textbf{\Huge Habe ich alles erkl"art?}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Variablen}
+\begin{block}{}
+Wir kennen bereits Attribute in Klassen...\pause\\
+...Variablen in Methoden funktionieren fast genau so!\pause\\[0.5em]
+Zum Beispiel zum Zwischenspeichern von Ergebnissen
+\end{block}
+
+\pause
+
+\begin{block}{Beispiel 1: Deklaration und Zuweisung}
+\ttfamily
+double mittelwert;\\
+mittelwert = 1 / 2.0 * (x0 + x1);
+\end{block}
+
+\begin{block}{Beispiel 2: Initialisierung}
+\ttfamily
+double flaeche = (xRechts - xLinks) * (yUnten - yOben);
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Methoden -- Erg"anzungen}
+\begin{block}{Bezugsobjekt}
+Alle nicht-\texttt{static} Methoden haben ein Bezugsobjekt\\
+Man kann auf Attribute des Bezugsobjekts zugreifen, indem man einfach ihren Attributnamen schreibt\\
+Eine Referenz auf das Bezugsobjekt ist via \texttt{this} verf"ugbar
+\end{block}
+
+\begin{block}{R"uckgabewerte}
+Man kann mittels \texttt{return} den R"uckgabewert einer Methode festlegen\\
+Der R"uckgabewert sollte nat"urlich zu dem angegeben R"uckgabetyp passen\\
+Bei einem \texttt{return} endet auch die Ausf"uhrung der Methode
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{"Ubung: Statistik}
+\begin{block}{Aufgabe}
+Schreiben Sie eine Klasse die Mittelwert und Standardabweichung f"ur Datens"atze berechnet. Die Daten werden einzeln in Form von Gleitkommazahlen an eine Methode \texttt{hinzufuegen} ihrer Klasse "ubergeben. Der Mittelwert soll zu jeder Zeit "uber die Methode \texttt{leseMittelwert} und die Standardabweichung "uber eine Methode \texttt{leseStandardabweichung} augelesen werden k"onnen.\\Sie k"onnen hierbei davon ausgehen, dass die Methoden zum Auslesen nicht aufgerufen werden, bevor mindestens 2 Datens"atze eingelesen wurden!
+\end{block}
+
+\begin{block}{Hilfe (ohne Gew"ahr)}
+\begin{description}[Standardabweichung]
+\item[Mittelwert] $E(X) = \frac{1}{n} \underset{i = 1}{\overset{n}{\Sigma}} x_i = \frac{x_1 + x_2 + ... + x_n}{n}$
+\item[Varianz] $Var(X) = E(X^2) - (E(X))^2$
+\item[Standardabweichung] $\sigma_X = \sqrt{Var(X)}$ \hspace{5em} (Java: \texttt{Math.sqrt})
+\end{description}
+\end{block}
+\end{frame}
+
+
+\end{document}
