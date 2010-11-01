@@ -30,6 +30,33 @@
 
 \begin{frame}
 \frametitle{Willkommen}
+\pause
+\begin{alertblock}{Letztes Mal}
+\begin{itemize}
+\item Klasse und Objekt\\
+\item Attribute\\
+\item Elementare Datentypen
+\end{itemize}
+\end{alertblock}
+
+\pause
+
+\begin{block}{Dieses Mal}
+\begin{itemize}
+\item Methoden\\
+\item Variablen\\
+\item Einfache Operationen
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{exampleblock}{N"achstes Mal}
+\begin{itemize}
+\item Konstruktoren\\
+\item Kontrollfluss
+\end{itemize}
+\end{exampleblock}
 \end{frame}
 
 
@@ -128,7 +155,7 @@ Beispiele:\\
 \begin{frame}
 \frametitle{Einschub: Hello World! -- Parameter (speziell)}
 \begin{block}{Parameter bei \texttt{main}}
-Bis auf den formalen Parameter, der nur innerhalb der Methode eine Rolle spielt, ist es immer \texttt{String[] args}\\
+Bis auf den Parameternamen, der nur innerhalb der Methode eine Rolle spielt, ist es immer \texttt{String[] args}\\
 \texttt{args} ist ein Array (sp"ater in der Vorlesung) von Strings, die java mit "ubergeben werden
 \end{block}
 
@@ -189,7 +216,145 @@ mittelwert = 1 / 2.0 * (x0 + x1);
 \ttfamily
 double flaeche = (xRechts - xLinks) * (yUnten - yOben);
 \end{block}
+\end{frame}
 
+
+\begin{frame}
+\frametitle{Einfache Operationen}
+\begin{block}{Einleitung}
+Im Folgenden werden wir eine Menge Operationen kennenlernen die ihr in Java benutzen k"onnt. In der Regel funktionieren die meisten davon wie man es intuitiv erwarten w"urde.
+\end{block}
+
+\pause
+
+\begin{block}{Anmerkung}
+Ihr m"usst mir das nicht alles glauben, mittlerweile solltet ihr in der Lage sein es mit eigenen Programmen zu "uberpr"ufen ;)
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Zuweisung}
+\begin{block}{Zuweisungsoperator \texttt{=}}
+Dem Attribut oder der Variablen auf der linken Seite wird der Wert/Referenz der rechten Seite zugewiesen\\
+\alert{Verh"alt sich nicht symmetrisch! (\texttt{a = b} $\not\leftrightarrow \texttt{b = a})$}\\
+Anmerkung: Entspricht in der (Uni) Mathematik eher $:=$ als $=$
+\end{block}
+
+\pause
+
+\begin{block}{Beispiele}
+\ttfamily
+double a = 5.0;\\
+double b;\\
+a = 3.5;\\
+b = a;\\[0.5em]
+Author author = new Author();
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Vergleichsoperatoren (1)}
+\begin{block}{Gleichheit \texttt{==}}
+\begin{itemize}
+\item \textbf{Bei elementaren Datentypen} pr"uft ob die Werte identisch sind
+\item \textbf{Bei Klassen} pr"uft ob \alert{die Referenzen} (Identit"at) identisch sind\\
+Insbesondere k"onnen also zwei Objekte mit dem selben Zustand trotzdem bzgl. \texttt{==} verschieden sein\\
+In der Regel m"ochte man eher das Verhalten der \texttt{equals} Methode
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Beispiele}
+\ttfamily
+int yRes = 768;\\
+System.out.println(yRes == 1024); // false\\
+System.out.println(yRes == 768); // true\\[0.5em]
+String hello1 = new String(\textrm{''}World\textrm{''}):\\
+String hello2 = new String(\textrm{''}World\textrm{''});\\
+System.out.println(hello1 == hello1); // true\\
+System.out.println(hello1 == hello2); // false
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Vergleichsoperatoren (2)}
+\begin{block}{\texttt{<}, \texttt{<=}, \texttt{>=}, \texttt{>}}
+Operieren auf Ganzzahlen und Gleitkommazahlen\\
+Liefern das (gewohnte) Ergebnis als \texttt{boolean}
+\end{block}
+
+\pause
+
+\begin{block}{Beispiele}
+\ttfamily
+5 < 4 : \pause false\\
+4 < 5 : \pause true\\
+-23 <= 450 : \pause true\\
+-21.5 >= 600 : \pause false\\
+1E-30 > 1E15 : \pause false\\
+999 > 780 : \pause true
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Logik}
+\begin{block}{Negation \texttt{!}}
+{\ttfamily
+boolean a = !true;\\
+System.out.println(!false);\\
+System.out.println(!a);\\[0.5em]
+}Ausgabe:\pause\\
+\texttt{true}\\
+\texttt{true}
+\end{block}
+
+\pause
+
+\begin{block}{Und \texttt{\&\&}, Oder \texttt{||}}
+\texttt{a \&\& b} : ist genau dann \texttt{true}, wenn \texttt{a} und \texttt{b} \texttt{true} sind\\
+\texttt{a || b} : ist nur \texttt{true}, wenn mindestens \texttt{a} oder \texttt{b} \texttt{true} ist
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Arithmetische Operationen -- Vorwort}
+\begin{block}{Manche Menschen behaupten, der Computer k"onne rechnen...}\pause
+\alert{...das stimmt aber nicht!}\pause\\
+Der Computer macht gewisse Fehler die einem bewusst sein sollten!\pause\\
+\begin{itemize}
+\item Endliche Genauigkeit\\
+\item "Uberlauf\\
+\item Unterlauf
+\end{itemize}
+Zum Beispiel werden im Finanzbereich h"aufig Festkommazahlen (was eher Ganzzahlen entspricht) statt Gleitkommazahlen verwendet um keine Genauigkeit zu verlieren
+\end{block}
+
+\pause
+
+\begin{block}{Fazit}
+Gleitkommazahlen nie mit \texttt{==} vergleichen, sondern den Betrag der Differnz gegen ein kleines $\epsilon$ absch"atzen!
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Arithmetische Operationen}
+\begin{block}{Operationen}
+\begin{itemize}
+\item Addition: \texttt{+}\\
+\item Subtraktion \texttt{-}\\
+\item Multiplikation \texttt{*}\\
+\item Division \texttt{/}\\
+\item Modulo \texttt{\%}
+\end{itemize}
+Hinweis: Wenn beide Argumente Ganzzahlen sind, wird eine Ganzzahloperation durchgef"uhrt, was bei der Division bedeutet, dass das Ergebnis immer eine ganze Zahl ist und der Rest ignoriert wird!
+\end{block}
 \end{frame}
 
 
