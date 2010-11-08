@@ -63,10 +63,10 @@
 
 \begin{frame}
 \frametitle{Fazit: 1. "Ubungsblatt}
-\begin{block}{Hinweise}
+\begin{block}{Anmerkungen}
 \begin{itemize}
 \item Es ist immer besser, wenn eure L"osung kompiliert
-\item Bezeichner sollten sorgf"altig gew"ahlt werden
+\item Bezeichner sollen sorgf"altig gew"ahlt werden
 \end{itemize}
 \end{block}
 
@@ -101,6 +101,24 @@ Beispiel: Initialisierung von komplexen Zahlen
 
 
 \begin{frame}[containsverbatim]
+\frametitle{Konstruktoren -- Beispiel}
+\begin{lstlisting}
+class Counter {
+	int count;
+
+	Counter() {
+		count = 1;
+	}
+
+	Counter(int startcount) {
+		count = startcount;
+	}
+}
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}
 \frametitle{Konstruktoren -- Wie funktioniert das?}
 \begin{block}{\texttt{new}}
 \texttt{new} legt ein Objekt an und initialisert es mit dem passenden Konstruktor
@@ -113,20 +131,11 @@ Dieser wird ausgew"ahlt aufgrund
 \alert{Parameternamen sind nicht relevant!}
 \end{block}
 
-\begin{block}{Beispiel}
-\begin{lstlisting}
-class Counter {
-	int count;
+\pause
 
-	Counter() {
-		count  = 1;
-	}
-
-	Counter(int startCount) {
-		count = startCount;
-	}
-}
-\end{lstlisting}
+\begin{block}{Beispiele}
+\lstinline|Counter countA = new Counter();|\\
+\lstinline|Counter countB = new Counter(0);|
 \end{block}
 \end{frame}
 
@@ -150,11 +159,73 @@ In Konstruktoren k"onnen (und m"ussen) konstante Attribute der Klasse gesetzt we
 \end{frame}
 
 
+\begin{frame}[containsverbatim]
+\frametitle{Konstruktoren -- Beispiel mit \texttt{final}}
+\begin{lstlisting}
+class Complex {
+	final double re;
+	final double im;
+
+	Complex() {
+		re = 0;
+		im = 0;
+	}
+
+	Complex(double re) {
+		this.re = re;
+		im = 0;
+	}
+
+	Complex(double re, double im) {
+		this.re = re;
+		this.im = im;
+	}
+}
+\end{lstlisting}
+\end{frame}
+
+
 \begin{frame}
 \frametitle{"Ubung}
 \begin{center}
-\textbf{\Huge Auto (Aufgabe 1)}
+\textbf{\Huge Auto: Aufgabe 1}
 \end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Programmablauf}
+\lstinputlisting{examples/stripped/Statistik.java}
+
+\pause
+
+\begin{block}{\texttt{java Beispiel2Statistik}}
+Was passiert?
+\end{block}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Methoden -- Vertiefung}
+\begin{block}{"Uberladen}
+Wie bei Konstruktoren ist es auch bei Methoden m"oglich, Methoden mit gleichen Namen aufgrund von Parameteranzahl und Parametertypen zu unterscheiden 
+\end{block}
+
+\begin{block}{Beispiel}
+\begin{lstlisting}
+boolean isZero(int value) {
+	return value == 0;
+}
+
+boolean isZero(double value) {
+	return Math.abs(value) <= 1E-30;
+}
+
+boolean isZero(String value) {
+	return isZero(value.length());
+}
+\end{lstlisting}
+\end{block}
 \end{frame}
 
 
@@ -183,10 +254,44 @@ Daher erlauben wir nur Zugriff (von au"serhalb der Klasse) auf Attribute, Konsta
 \end{frame}
 
 
+\begin{frame}[containsverbatim]
+\frametitle{Geheimnisprinzip -- Beispiel}
+\begin{lstlisting}
+public class Counter {
+	private int count;
+
+	public Counter() {
+		count = 1;
+	}
+
+	public Counter(int count) {
+		this.count = count;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void incrementCounter() {
+		count = count + 1;
+	}
+
+	public void decrementCounter() {
+		count = count  - 1;
+	}
+
+	public boolean isZero() {
+		return count == 0;
+	}
+}
+\end{lstlisting}
+\end{frame}
+
+
 \begin{frame}
 \frametitle{"Ubung}
 \begin{center}
-\textbf{\Huge Auto (Aufgabe 2)}
+\textbf{\Huge Auto: Aufgabe 2}
 \end{center}
 \end{frame}
 
