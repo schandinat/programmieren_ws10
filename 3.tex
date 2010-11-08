@@ -1,0 +1,209 @@
+\documentclass{beamer}
+\usepackage{ngerman}
+\usepackage{listings}
+\usepackage {ulem}
+\usetheme{Madrid}
+\title{Programmieren Tutorium}
+\author{Florian Tobias Schandinat}
+\date{8.11.2010}
+\institute{FTS}
+\definecolor{mygreen}{RGB}{0,128,0}
+\definecolor{mybrown}{RGB}{128,0,0}
+\definecolor{mygray}{RGB}{240,240,240}
+\lstset{language=Java,
+	backgroundcolor=\color{mygray},
+	basicstyle=\tiny\ttfamily,
+	keywordstyle=\color{blue},
+	stringstyle=\color{mybrown},
+	commentstyle=\color{gray},
+	numbers=left,
+	numberstyle=\color{mygreen},
+	frame=single,
+	tabsize=4,
+	showstringspaces=false,
+	xleftmargin=3.5em,
+	xrightmargin=2em}
+
+
+\begin{document}
+
+
+\begin{frame}
+\frametitle{Willkommen}
+\pause
+\begin{alertblock}{Letztes Mal}
+\begin{itemize}
+\item Variablen\\
+\item Einfache Operationen\\
+\item Methoden - Crashkurs
+\end{itemize}
+\end{alertblock}
+
+\pause
+
+\begin{block}{Dieses Mal}
+\begin{itemize}
+\item Konstruktoren und \texttt{final}\\
+\item Programmablauf\\
+\item Methoden -- Vertiefung\\
+\item Geheimnisprinzip -- \texttt{public}, \texttt{protected}, \texttt{private}
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{exampleblock}{N"achstes Mal}
+\begin{itemize}
+\item Kontrollfluss\\
+\item Tests
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Fazit: 1. "Ubungsblatt}
+\begin{block}{Hinweise}
+\begin{itemize}
+\item Es ist immer besser, wenn eure L"osung kompiliert
+\item Bezeichner sollten sorgf"altig gew"ahlt werden
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Musterl"osung}
+inklusive JavaDoc
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Konstruktoren -- Einleitung}
+\begin{block}{Wir finden Initialisierung toll...}
+\pause
+da Attribute und Variablen dann direkt den gewollten Wert haben\pause\\
+Um dies auch f"ur komplexe Objekte erm"oglichen zu k"onnen haben wir Konstruktoren!\\[0.5em]
+Beispiel: Initialisierung von komplexen Zahlen
+\end{block}
+
+\pause
+
+\begin{block}{Konstruktoren -- "Uberblick}
+\begin{itemize}
+\item dienen dazu ein Objekt zu initialisieren\\
+\item sind generell sehr "ahnlich zu Methoden\\
+\item besitzen jedoch \alert{keinen R"uckgabetyp} und geben auch nichts zur"uck\\
+\item k"onnen aber Parameter haben
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Konstruktoren -- Wie funktioniert das?}
+\begin{block}{\texttt{new}}
+\texttt{new} legt ein Objekt an und initialisert es mit dem passenden Konstruktor
+Dieser wird ausgew"ahlt aufgrund
+\begin{itemize}
+\item der Klasse\\
+\item der Parameteranzahl\\
+\item der Reinfolge der Parametertypen
+\end{itemize}
+\alert{Parameternamen sind nicht relevant!}
+\end{block}
+
+\begin{block}{Beispiel}
+\begin{lstlisting}
+class Counter {
+	int count;
+
+	Counter() {
+		count  = 1;
+	}
+
+	Counter(int startCount) {
+		count = startCount;
+	}
+}
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{\texttt{final}}
+\begin{block}{Einleitung}
+\texttt{final} dient zur Deklaration von Konstanten, die zur Laufzeit nicht ver"andert werden k"onnen\\
+Es kann bei der Deklaration Attributen/Variablen vorangestellt werden\\
+Wenn es in Verbindung mit \texttt{static} auftaucht, verwenden wir nur Gro"sbuchstaben f"ur den Bezeichner\\
+Beispiele:\\
+\lstinline|final static double PI = 3.14;|\\
+\lstinline|final double epsilon = 1E-20;|
+\end{block}
+
+\pause
+
+\begin{block}{\texttt{final} und Konstruktoren}
+In Konstruktoren k"onnen (und m"ussen) konstante Attribute der Klasse gesetzt werden, sofern nicht bereits eine Zuweisung besteht
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{"Ubung}
+\begin{center}
+\textbf{\Huge Auto (Aufgabe 1)}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Geheimnisprinzip}
+\begin{block}{Ziel}
+Wiederverwendbarkeit und Wartbarkeit
+\end{block}
+
+\pause
+
+\begin{block}{Lokalit"atsprinzip}
+"Anderungen sollen nur lokale Auswirkungen haben
+\end{block}
+
+\pause
+
+\begin{block}{Folgerung}
+Daher erlauben wir nur Zugriff (von au"serhalb der Klasse) auf Attribute, Konstanten und Methoden wenn es erforderlich ist
+\begin{description}
+\item[\texttt{public}] Zugriff aus jeder Klasse m"oglich
+\item[\texttt{protected}] Zugriff von innerhalb der Klasse und aus Unterklassen (sp"ater) erlaubt
+\item[\texttt{private}] Zugriff nur von innerhalb der Klasse erlaubt
+\end{description}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{"Ubung}
+\begin{center}
+\textbf{\Huge Auto (Aufgabe 2)}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ende}
+\begin{block}{TODO}
+\begin{enumerate}
+\item Einreichen einer L"osung f"ur das 2. "Ubungsblatt im Praktomat bis \alert{22.11.2010, 13:00}
+\item Anmelden f"ur den "Ubungsschein auf https://studium.kit.edu/ bis \alert{31.3.2011}
+\end{enumerate}
+\end{block}
+
+\begin{block}{Vielen Dank f"ur die Aufmerksamkeit!}
+...und viel Spa"s beim Programmieren :)
+\end{block}
+\end{frame}
+
+
+\end{document}
