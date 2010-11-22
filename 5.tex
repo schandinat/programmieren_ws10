@@ -1,0 +1,338 @@
+\documentclass{beamer}
+\usepackage{ngerman}
+\usepackage{listings}
+\usepackage {ulem}
+\usetheme{Madrid}
+\title{Programmieren Tutorium}
+\author{Florian Tobias Schandinat}
+\date{22.11.2010}
+\institute{FTS}
+\definecolor{mygreen}{RGB}{0,128,0}
+\definecolor{mybrown}{RGB}{128,0,0}
+\definecolor{mygray}{RGB}{240,240,240}
+\lstset{language=Java,
+	backgroundcolor=\color{mygray},
+	basicstyle=\tiny\ttfamily,
+	keywordstyle=\color{blue},
+	stringstyle=\color{mybrown},
+	commentstyle=\color{gray},
+	numbers=left,
+	numberstyle=\color{mygreen},
+	frame=single,
+	tabsize=4,
+	showstringspaces=false,
+	xleftmargin=3.5em,Smilie Trauer
+	xrightmargin=2em}
+
+
+\begin{document}
+
+
+\begin{frame}
+\frametitle{Willkommen}
+\pause
+\begin{alertblock}{Letztes Mal}
+\begin{itemize}
+\item Verzweigung
+\item Schleifen
+\item Tests
+\end{itemize}
+\pause
+\begin{center}
+\textbf{\alert{Leider nicht!}}
+\end{center}
+\end{alertblock}
+
+\pause
+
+\begin{block}{Dieses Mal}
+\begin{itemize}
+\item Verzweigung
+\item Schleifen
+\item Tests
+\item Arrays
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{R"uckblick :(}
+\begin{block}{Wer "ubt auch au"serhalb des Vorlesungs- und "Ubungsbetriebs?}
+\pause
+$\Rightarrow$ \textbf{Ihr sollt und m"usst ggf. den Stoff nacharbeiten!}\\[0.5em]
+\pause
+Ihr wollt doch auch nicht, dass der Stoff f"ur das "Ubungsblatt erst \alert{nach} der Abgabe des "Ubungsblattes besprochen wird!
+\end{block}
+
+\pause
+
+\begin{block}{Vertiefungstutorium}
+\begin{description}
+\item[Wann?] Dienstags, 9:45-11:15
+\item[Wo?] morgen: 50.34, Raum 148
+\end{description}
+\textbf{Auch dort sollt ihr die Aufgaben m"oglichst selbstst"andig l"osen}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Verzweigung}
+\begin{block}{\texttt{if (A) \{B\} else \{C\}}}
+Wenn \texttt{A} (Boolscher Ausdruck) zu \texttt{true} evaluiert, wird der Codeblock \texttt{B} ausgef"uhrt, andernfalls wird der Codeblock \texttt{C} ausgef"uhrt\\
+\textbf{Hinweis:} Das \texttt{else \{C\}} ist optional
+\end{block}
+
+\begin{lstlisting}
+public static double max(double a, double b) {
+	double max;
+
+	if (a > b) {
+		max = a;
+	} else {
+		max = b;
+	}
+
+	return max;
+}
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Noch mehr Verzweigung}
+\begin{block}{Kaskadierung}
+\begin{lstlisting}
+if (A1) {
+	...
+} else if (A2) {
+	...
+} else {
+	...
+}
+\end{lstlisting}
+\end{block}
+
+\begin{block}{Verschachtelung}
+\begin{lstlisting}
+if (A) {
+	if (A1) {
+		...
+	} else {
+		...
+	}
+} else {
+	...
+}
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Schleifen -- Warum?}
+\begin{lstlisting}
+/* Summiere von 1 bis 4 */
+int summe = 0;
+summe = summe + 1;
+summe = summe + 2;
+summe = summe + 3;
+summe = summe + 4;
+\end{lstlisting}
+
+\begin{block}{Schleife statt copy-and-paste}
+\begin{lstlisting}
+/* Summiere von 1 bis 4 */
+int summe = 0;
+for (int i = 1; i <= 4; i = i + 1) {
+	summe = summe + i;
+}
+\end{lstlisting}
+\end{block}
+
+\begin{block}{Flexibel/Dynamisch zur Laufzeit}
+\begin{lstlisting}
+/* Summiere von 1 bis n */
+int summe = 0;
+for (int i = 1; i <= n; i = i + 1) {
+	summe = summe + i;
+}
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Schleifen -- for}
+\begin{block}{\texttt{for (I; C; A) \{B\}}}
+Bei der \texttt{for}-Schleife (auch Z"ahlschleife genannt) wir zu Beginn \texttt{I} ausgef"uhrt\\
+Vor jedem Schleifendurchlauf wird der Boolsche Ausdruck \texttt{C} evaluiert und nur wenn er \texttt{true} ist, wird die Schleife durchlaufen, ansonsten geht die Programmausf"uhrung unterhalb der Schleife weiter\\
+Bei jedem Schleifendurchlauf wird zuerst \texttt{B}, dann \texttt{A} ausgef"uhrt und anschlie"send wieder \texttt{C} evaluiert um zu entscheiden ob die Schleife nochmal durchlaufen werden soll\\[0.5em]
+\textbf{Hinweis:} Normalerweise steht die Anzahl der Durchl"aufe schon vor dem ersten Schleifendurchlauf fest
+\end{block}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Schleifen -- while}
+\begin{block}{\texttt{while (C) \{B\}}}
+Die \texttt{while} Schleife wird durchlaufen (d.h. \texttt{B} ausgef"uhrt) solange der Boolsche Ausdruck \texttt{C} zu \texttt{true} evaluiert\\[0.5em]
+\textbf{Hinweis:} Wenn \texttt{C} von einer Variable abh"angt die in \texttt{B} bei jedem Durchlauf inkrementiert/dekrementiert wird, k"onnte eine \texttt{for}-Schleife besser sein
+\end{block}
+
+\begin{block}{Beispiel}
+\begin{lstlisting}
+/* success could be already false due to previous errors */
+while (success) {
+	token = nextToken();
+	success = token.isValid();
+}
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Schleifen -- do-while}
+\begin{block}{\texttt{do \{B\} while (C)}}
+Sehr "ahnlich zur \texttt{while}-Schleife, nur das bei der \texttt{do-while} Schleife \texttt{B} mindestens einmal ausgef"uhrt wird
+\end{block}
+
+\begin{block}{Beispiel}
+\begin{lstlisting}
+/* do the first run regardless of whether success is true or false */
+do {
+	token = nextToken();
+	success = token.isValid();
+} while (success);
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Schleifen -- "Ubung}
+\begin{center}
+\textbf{\Huge Primzahlen: Aufgabe 1, 2}\\[2em]
+\textbf{Hinweis}: Formal sind alle Schleifen "aquivalent
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Testen (1)}
+\begin{block}{Warum "uberhaupt testen?}
+\pause
+\textbf{\glqq Ein Feature das nicht getestet wurde existiert auch nicht!\grqq} \\[1em]
+Erst das Testen macht das spezifizierte Verhalten von Methoden und Klassen verl"asslich!
+\end{block}
+
+\pause
+
+\begin{block}{Was testen?}
+\begin{itemize}
+\item \textbf{Normalfall} : Das Verhalten bei  ''richtigen'' Eingabedaten
+\item \textbf{Randf"alle} : "Ubergangsbereiche (Normallfall $\leftrightarrow$ Fehlerfall)
+\item \textbf{Spezialf"alle} : Beispiel: 0!
+\item \textbf{Fehlerfall} : Das Verhalten bei ''falschen'' Eingabedaten
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Testen (2)}
+\begin{block}{Manuelles Testen}
+Ausgabe von Testwerten und Vergleichen mit erwartetem Ergebniss\\[1em]
+-- m"uhsam\\
+-- fehleranf"allig
+\end{block}
+
+\begin{block}{Automatisches Testen}
+Programme "uberpr"ufen die Testwerte mit erwartetem Ergebniss\\[1em]
++ ohne Probleme nach jeder "Anderung durchf"uhrbar\\
+-- manche Sachen sind schwierig durch Programme zu "uberpr"ufen
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Arrays -- Einleitung}
+\begin{block}{Was ist ein Array?}
+\pause
+\begin{itemize}
+\item Ein Objekt
+\item Eine Ansammlung von Objekten/Werten des gleichen Typs
+\end{itemize}
+\textbf{Hinweis: Arrays k"onnen also insbesondere selbst wieder Arrays enthalten}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Arrays -- Verwendung (1)}
+\begin{block}{Deklaration}
+\begin{lstlisting}
+int[] primzahlen;
+int[][] table;
+\end{lstlisting}
+\end{block}
+
+\begin{block}{Zuweisung}
+\begin{lstlisting}
+primzahlen = new int[42];
+table = new int[2][2];
+\end{lstlisting}
+\end{block}
+
+\begin{block}{Initialisierung}
+\begin{lstlisting}
+String[] fehlermeldungen = {"Datei existiert nicht", "Datei ist kaputt"};
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Arrays -- Verwendung (2)}
+\begin{block}{Zugriff auf i-tes Element}
+\begin{lstlisting}
+primzahlen[0] = 2;
+table[0][0] = 1;
+\end{lstlisting}
+\textbf{Hinweis:} Ein Array a mit n Elementen, enth"alt nur die Elemente \texttt{a[0]},...,\texttt{a[n-1]}, \alert{nicht} \texttt{a[n]}
+\end{block}
+
+\begin{block}{L"ange ermitteln}
+\begin{lstlisting}
+int length = primzahlen.length;
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{"Ubung}
+\begin{center}
+\textbf{\Huge Arrays und Schleifen}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ende}
+\begin{block}{TODO}
+\begin{enumerate}
+\item Einreichen einer L"osung f"ur das 3. "Ubungsblatt im Praktomat bis \alert{6.12.2010, 13:00}
+\item Anmelden f"ur den "Ubungsschein auf https://studium.kit.edu/ bis \alert{31.3.2011}
+\end{enumerate}
+\end{block}
+
+\begin{block}{Vielen Dank f"ur die Aufmerksamkeit!}
+...und viel Spa"s beim Programmieren :)
+\end{block}
+\end{frame}
+
+
+\end{document}
