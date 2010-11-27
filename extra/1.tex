@@ -1,0 +1,42 @@
+\documentclass[a4paper]{article}
+\usepackage{ngerman}
+\usepackage[left=2.9cm,right=2.9cm,top=3cm,bottom=4.5cm]{geometry}
+
+
+\begin{document}
+\begin{center}
+\textbf{\large Aufgabenblatt f"ur das 1. Vertiefungstutorium}
+\end{center}
+
+Im Folgenden wollen wir einen Taschenrechner, zum Beispiel in einer \texttt{class Calculator}, implementieren. Um uns dabei auch mit Stringfunktionen vertraut zu machen, wollen wir einen \textit{String} direkt parsen anstatt \textit{Integer.parseInt} zu benutzen.
+\begin{enumerate}
+\item Machen sie sich mit \textit{String.charAt} und \textit{String.length} vertraut (JavaDoc)
+
+\item Schreiben sie eine Funktion \texttt{public Integer toInt(String number)}, die eine Ganzzahl einlesen kann
+	\begin{itemize}
+	\item Die Funktion soll sowohl positive als auch negative Zahlen einlesen k"onnen, wobei bei positiven das Vorzeichen optional sein soll
+	\item Eine korrekte Zahl bestehe im Moment bis auf das Vorzeichen nur aus beliebig vielen Ziffern 0-9
+	\item Machen sie sich Gedanken dar"uber, was passieren soll, wenn \textit{number} keine Zahl ist (Was ist der Unterschied zwischen \textit{Integer} und \textit{int}?)
+	\end{itemize}
+
+\item Testen sie ihre Methode \texttt{public Integer toInt(String number)}\\
+Schreiben sie daf"ur eine \textit{main}-Methode. Versuchen sie dabei sowohl manuelles als auch automatisches Testen umzusetzen. Versuchen sie \glqq interaktives\grqq Testen, das kein neukompilieren ben"otigt um andere Zahlen zu testen, zu realisieren (Hinweis: \textit{args}).
+
+\item Schreiben sie eine Funktion \texttt{public Integer calculate(String operation, Integer operand0, Interger operand1)} die das Ergebniss einer mathematischen Operation der Form \textit{operand0 operation operand1} berechnet und zur"uckgibt\\
+Implementieren sie die Operationen +, --\\
+Beachten sie die F"alle wenn die Operation oder ein Operand ung"ultig ist, verfahren sie in diesem Fall analog zu ung"ultigen Zahlen
+
+\item Testen sie \texttt{public Integer calculate(String operation, Integer operand0, Interger operand1)}
+
+\item Schreiben sie eine Methode \texttt{public Integer calculate(String[] calculation)}\\
+\textit{calculation} enthalte Zahlen und Operationen in der gewohnten Reichenfolge, also zB 5 + 4 - 3\\
+Verwenden sie \texttt{public Integer toInt(String number)} und \texttt{public Integer calculate(String operation, Integer operand0, Interger operand1)}
+
+\item Schreiben sie eine \textit{main}-Methode, die \texttt{public Integer calculate(String[] calculation)} mit args als Parameter aufruft
+
+\end{enumerate}
+
+\begin{center}
+\textbf{\large Fertig!}
+\end{center}
+\end{document}
