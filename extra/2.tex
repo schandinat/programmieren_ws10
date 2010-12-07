@@ -1,0 +1,39 @@
+\documentclass[a4paper]{article}
+\usepackage{ngerman}
+\usepackage[left=2.9cm,right=2.9cm,top=3cm,bottom=4.5cm]{geometry}
+
+
+\begin{document}
+\begin{center}
+\textbf{\large 2. Aufgabenblatt f"ur das Vertiefungstutorium}
+\end{center}
+
+\begin{center}
+{\large Die T"urme von Hanoi}
+\end{center}
+
+\textbf{Spielprinzip}\\
+\glqq Das Spiel besteht aus drei St"aben A, B und C, auf die mehrere gelochte Scheiben gelegt werden, alle verschieden gro"s. Zu Beginn liegen alle Scheiben auf Stab A, der Gr"o"se nach geordnet, mit der grö"o"sten Scheibe unten und der kleinsten oben. Ziel des Spiels ist es, den kompletten Scheiben-Stapel von A nach C zu versetzen.\\
+Bei jedem Zug darf die oberste Scheibe eines beliebigen Stabes auf einen der beiden anderen St"abe gelegt werden, vorausgesetzt, dort liegt nicht schon eine kleinere Scheibe. Folglich sind zu jedem Zeitpunkt des Spieles die Scheiben auf jedem Feld der Gr"o"se nach geordnet.\grqq \\[1em]
+
+\textbf{Aufgabenstellung}\\
+Im Folgenden werden wir da Spiel nachbauen. Hierf"ur werden wir zun"achst die St"abe als Stacks modellieren. Stacks sind "ahnlich wie Listen, unterst"utzten jedoch nur
+\begin{description}
+\item[\texttt{push(x)}] Das Objekt x oben auf den Stack legen
+\item[\texttt{pop()}] Das oberste Objekt vom Stack entfernen
+\end{description}
+Genauer gesagt werden wir Stacks von Ganzzahlen benutzen, wobei die Zahl die Gr"o"se einer Scheibe repr"asentiert.\\[1em]
+\begin{enumerate}
+\item Entwerfen sie eine Klasse \texttt{IntegerStack}, sowie eventuell ben"otigte Hilfsklassen, so mit Attributen, dass es ihnen m"oglich ist einen Stack darzustellen und die Methoden zu implementieren.
+\item F"ugen sie der Klasse \texttt{IntegerStack} eine Methode \texttt{public void push(int value)} hinzu um Zahlen auf den Stack legen zu k"onnen.
+\item Um die Klasse visualisieren zu k"onnen, erg"anzen sie die Klasse \texttt{IntegerStack} um eine Methode \texttt{public String toString()}. Die Werte auf dem Stack sollen dabei durch eine entsprechende Anzahl '\#' visualisiert werden, also zB 3 durch ''\#\#\#''. Die Werte sind jeweils durch einen Zeilenumbruch zu trennen.
+\item Testen sie \texttt{push} und \texttt{toString}
+\item Erg"anzen sie die Klasse \texttt{IntegerStack} um eine Methode \texttt{public int pop()} die das oberste Element vom Stack entfernt und zu"uckgibt.
+\item Testen sie, dass ihre Methoden sich bei beliebigen Kombinationen von \texttt{push}, \texttt{pop} und \texttt{toString} richtig verhalten
+\item Was haben Stacks mit Listen zu tun?
+\item Erg"anzen sie \texttt{IntegerStack} um die Methoden \texttt{public int size()}, die die Anzahl der Elemente des Stacks zur"uckgibt sowie einer Methode \texttt{public boolean isEmpty()}, die genau dann \texttt{true} zur"uck gibt, wenn der Stack leer ist.
+\end{enumerate}
+\begin{center}
+\textbf{\large Fertig!}
+\end{center}
+\end{document}
