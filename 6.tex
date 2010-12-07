@@ -1,0 +1,154 @@
+\documentclass{beamer}
+\usepackage{ngerman}
+\usepackage{listings}
+\usepackage {ulem}
+\usetheme{Madrid}
+\title{Programmieren Tutorium}
+\author{Florian Tobias Schandinat}
+\date{29.11.2010}
+\institute{FTS}
+\definecolor{mygreen}{RGB}{0,128,0}
+\definecolor{mybrown}{RGB}{128,0,0}
+\definecolor{mygray}{RGB}{240,240,240}
+\lstset{language=Java,
+	backgroundcolor=\color{mygray},
+	basicstyle=\tiny\ttfamily,
+	keywordstyle=\color{blue},
+	stringstyle=\color{mybrown},
+	commentstyle=\color{gray},
+	numbers=left,
+	numberstyle=\color{mygreen},
+	frame=single,
+	tabsize=4,
+	showstringspaces=false,
+	xleftmargin=3.5em,Smilie Trauer
+	xrightmargin=2em}
+
+
+\begin{document}
+
+
+\begin{frame}
+\frametitle{Willkommen}
+\pause
+\begin{alertblock}{Letztes Mal}
+\begin{itemize}
+\item Verzweigung
+\item Schleifen
+\item Tests
+\item Arrays
+\end{itemize}
+\end{alertblock}
+
+\pause
+
+\begin{block}{Dieses Mal}
+\begin{itemize}
+\item JavaDoc
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Fazit: 2. "Ubungsblatt}
+\begin{block}{Anmerkungen}
+\begin{itemize}
+\item \lstinline|String toString()| : Hinweise vom "Ubungsleiter\\
+$\rightarrow$ Seht es als Hinweis f"ur die Abschlussaufgaben\pause
+\item \lstinline|String getContactInformation()| : Vorgegebene Formate strikt befolgen\pause
+\item \lstinline|int daysSince1900()|\pause
+\item \lstinline|int getAgeInDays(Date today)|
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Allgemein}
+\begin{itemize}
+\item Vorsicht mit JavaDoc!
+\item Vorgegebene Signaturen strikt befolgen\\
+$\rightarrow$ besser gleich abschreiben
+\item Parameter nicht ignorieren\\
+in der Regel (Ausnahme: \texttt{main}) ist das falsch! 
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{"Ubung}
+\begin{center}
+\textbf{\Huge Arrays und Schleifen}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{JavaDoc -- Einleitung} 
+\begin{block}{Was ist JavaDoc?}
+\lstinline|/** JavaDoc */|\pause\\
+Formale Dokumentation\pause\\
+Sie dient dem Anwender einer Klasse und soll die nach au"sen sichtbare Schnittstelle (\texttt{public}) beschreiben\pause\\
+$\rightarrow$ jede Klasse, Methode und Attribut, die \texttt{public} deklariert sind, muss mit JavaDoc dokumentiert werden!
+\end{block}
+
+\pause
+
+\begin{block}{JavaDoc benutzen}
+\texttt{javadoc HelloWorld.java}\\
+Erzeugt JavaDoc (HTML Dateien) aus HelloWorld.java (die Klasse muss hierf"ur \texttt{public} sein)\\
+$\rightarrow$ index.html mit einem Webbrowser "offnen
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{JavaDoc -- Selber schreiben!}
+\begin{block}{Wie ist JavaDoc aufgebaut?}
+\begin{itemize}
+\item Der erste Satz ist eine Kurzzusammenfassung
+\item Alle folgenden S"atze dienen der genaueren Erl"auterung
+\item Umlaute sollten nach M"oglichkeit als HTML geschrieben werden
+\item Es gibt Tags
+\begin{itemize}
+\item @param $\langle$Parameternamen$\rangle$ $\langle$Erkl"arung$\rangle$\\
+\alert{Muss} f"ur jeden Parameter einer \texttt{public} Methode vorhanden sein
+\item @return $\langle$Erkl"arung$\rangle$\\
+\alert{Muss} f"ur jede \texttt{public} Methode mit nicht-\texttt{void} R"uckgabetyp vorhanden sein
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Vertiefungstutorium}
+\begin{block}{Vertiefungstutorium}
+\begin{description}
+\item[Wann?] Dienstags, 9:45-11:15
+\item[Wo?] 50.34, Raum 010
+\end{description}
+\textbf{Auch dort sollt ihr die Aufgaben m"oglichst selbstst"andig l"osen!}
+\alert{Soweit m"oglich bitte Notebooks mitbringen!}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ende}
+\begin{block}{TODO}
+\begin{enumerate}
+\item Einreichen einer L"osung f"ur das 3. "Ubungsblatt im Praktomat bis \alert{6.12.2010, 13:00}
+\item Anmelden f"ur den "Ubungsschein auf https://studium.kit.edu/ bis \alert{31.3.2011}
+\end{enumerate}
+\end{block}
+
+\begin{block}{Vielen Dank f"ur die Aufmerksamkeit!}
+...und viel Spa"s beim Programmieren :)
+\end{block}
+\end{frame}
+
+
+\end{document}
+
