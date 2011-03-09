@@ -1,0 +1,192 @@
+\documentclass{beamer}
+\usepackage{ngerman}
+\usepackage{listings}
+\usepackage {ulem}
+\usetheme{Madrid}
+\title{Programmieren Tutorium}
+\author{Florian Tobias Schandinat}
+\date{20.12.2010}
+\institute{FTS}
+\definecolor{mygreen}{RGB}{0,128,0}
+\definecolor{mybrown}{RGB}{128,0,0}
+\definecolor{mygray}{RGB}{240,240,240}
+\lstset{language=Java,
+	backgroundcolor=\color{mygray},
+	basicstyle=\tiny\ttfamily,
+	keywordstyle=\color{blue},
+	stringstyle=\color{mybrown},
+	commentstyle=\color{gray},
+	numbers=left,
+	numberstyle=\color{mygreen},
+	frame=single,
+	tabsize=4,
+	showstringspaces=false,
+	xleftmargin=3.5em,Smilie Trauer
+	xrightmargin=2em}
+
+
+\begin{document}
+
+
+\begin{frame}
+\frametitle{Willkommen}
+\pause
+\begin{alertblock}{Letztes Mal}
+\begin{itemize}
+\item Sortieren
+\end{itemize}
+\end{alertblock}
+
+\begin{block}{Dieses Mal}
+\begin{itemize}
+\item Vererbung
+\item Rekursion
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{4. "Ubungsblatt}
+\begin{center}
+\textbf{\Huge Wie lief das 4. "Ubungsblatt?}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Nachtrag: 3. "Ubungsblatt}
+\begin{block}{Wichtig}
+\begin{itemize}
+\item Randf"alle, {\LARGE Randf"alle}, \alert{\Huge Randf"alle!}
+\item Tests sollen alle public Methoden umfassen und mindestens Normal- und Fehlerf"alle enthalten!
+\item Wenn Praktomat meckert kann ich nicht zufrieden sein!
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Stubs}\pause
+...oder was mache ich, wenn ich eine Aufgabe nicht l"osen konnte\\\pause
+Signatur "ubernehmen und so erg"anzen, dass es kompiliert\\
+\lstinline|public static String[] tokenize(String text) \{|\\
+\hspace{2em}\lstinline|return null;|\\
+\lstinline|\}|\\\pause
+Vorteil: Erlaubt es davon abh"angende Teilaufgaben zu bearbeiten
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Vererbung}
+\begin{block}{Was ist Vererbung?}\pause
+Vererbung dient der Konkretisierung einer Klasse
+\end{block}
+
+\pause
+
+\begin{block}{\texttt{class A extends B}}\pause
+Klasse A erbt von Oberklasse B alle \lstinline|public| und \lstinline|protected| Methoden und Attribute\pause\\
+A kann die geerbten Methoden "uberschreiben
+\end{block}
+
+\pause
+
+\begin{center}
+\textbf{\Huge Freie "Ubung}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Rekursion}
+\begin{block}{Was ist Rekursion?}
+Direkter oder indirekt Selbstaufruf einer Methode\\
+\alert{Endlosrekursion ($\leftrightarrow$ Endlosschleifen)}
+\end{block}
+
+\begin{block}{Beispiel}
+\begin{lstlisting}
+public static String echo(String message, int count) {
+	String echo = message;
+	if (count >= 1) {
+		echo += echo(message, count - 1);
+	}
+	return echo;
+}
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Rekursion -- "Ubungen (1)}
+\begin{block}{"Ubung 1}
+Schreiben Sie eine Methode, die die Fakult"at rekursiv berechnet.
+\end{block}
+
+\pause
+
+\begin{block}{"Ubung 2}
+Schreiben Sie eine Methode, die die Fibonacci-Folge berechnet.
+$$f(n) = n\textrm{, falls $n = 0 \vee n = 1$ }$$
+$$f(n) = f(n - 1) + f(n - 2)\textrm{, falls $n \ge 2$ }$$
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Rekursion -- "Ubungen (2)}
+\begin{block}{"Ubung 3}
+Schreiben Sie eine Methode, die die Ackermann-Funktion berechnet.
+$$A(m,n) = n + 1\textrm{, falls $m = 0$ }$$
+$$A(m,n) = A(m - 1, 1)\textrm{, falls $m > 0 \wedge n = 0$ }$$
+$$A(m,n) = A(m - 1, A(m, n - 1))\textrm{, falls $m > 0 \wedge n > 0$ }$$
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Hilfe}
+\begin{block}{Vertiefungstutorium}
+\begin{description}
+\item[Wann?] Dienstags, 9:45-11:15
+\item[Wo?] 50.34, Raum 010
+\end{description}
+\textbf{Auch dort sollt ihr die Aufgaben m"oglichst selbstst"andig l"osen!}
+\alert{Soweit m"oglich bitte Notebooks mitbringen!}
+\end{block}
+
+\begin{block}{Programmierberatung}
+\begin{description}
+\item[Wann?]
+\begin{itemize}
+\item Montags, 11:30 - 13:00
+\item Dienstags, 9:45 - 11:15
+\item Donnerstags, 9:45 - 11:15
+\end{itemize}
+\item[Wo?] 50.34, Raum -143
+\end{description}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ende}
+\begin{block}{TODO}
+\begin{enumerate}
+\item Einreichen einer L"osung f"ur das 5. "Ubungsblatt im Praktomat bis \alert{6.1.2011, 13:00}
+\item Anmelden zu den Abschlussaufgaben auf https://studium.kit.edu/ bis \alert{23.1.2011}
+\item Anmelden f"ur den "Ubungsschein auf https://studium.kit.edu/ bis \alert{31.3.2011}
+\end{enumerate}
+\end{block}
+
+\begin{block}{Vielen Dank f"ur die Aufmerksamkeit!}
+Sch"one Weihnachten und einen guten Rutsch ins neue Jahr!\\
+...und viel Spa"s beim Programmieren :)
+\end{block}
+\end{frame}
+
+
+\end{document}
+
